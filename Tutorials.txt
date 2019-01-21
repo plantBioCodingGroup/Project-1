@@ -3,3 +3,7 @@
 #Git command line suite:
 https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line
 
+#Configure multiple accounts to use git from same computer
+https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574
+
+
