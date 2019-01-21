@@ -1,0 +1,7 @@
+#Sarah trying to code round 2
+pwd
+print("hello world")
+#t.test
+#This isn't R
+#Or can it be?
+read.table("C:/users/sarah/desktop/homework/HW1, header = T")
