@@ -1,0 +1,9 @@
+#!/bin/bash
+#test_scripty_script
+
+#Wrote online:
+echo "I wrote this online"
+
+#Try to edit locally:
+#NAME="your_name"
+#echo "I wrote this locally: ${NAME}"
