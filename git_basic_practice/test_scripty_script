@@ -5,5 +5,5 @@
 echo "I wrote this online"
 
 #Try to edit locally:
-#NAME="your_name"
-#echo "I wrote this locally: ${NAME}"
+NAME="Jeremy"
+echo "I wrote this locally: ${NAME}"
