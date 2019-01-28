@@ -27,8 +27,8 @@ e. Type "git remote -v" again to make sure the original repo was added as upstre
 
 4. type "git add $YOUR-FILE" for a single file or "git add ." for all files
 
-5. type "git push"
+5. type 'git commit -m "comment"'
 
-6. type "git commit"
+6. type git push
 
 7. submit a pull request from your fork to the original repository
