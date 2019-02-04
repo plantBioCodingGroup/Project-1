@@ -1,30 +1,27 @@
 # reads in a fasta file and skips header lines
+import datetime
 def fileReader(file_Path):
+    print("Started reading file at: {0}".format(datetime.datetime.now()))
     filePath = file_Path
-    file = open(filePath, 'r')
     seq_list = list()
-    for line in file:
-        if line.startswith(">"):
-            pass
-        else:
-            seq_list.append(line)
-    file.close()
+    with open(filePath, 'r') as infile:
+        for line in infile:
+            if line.startswith(">"):
+                pass
+            else:
+                seq_list.append(line)
+        print("Finished reading file at: {0}".format(datetime.datetime.now()))
     return (seq_list)
 
 # Counts the number of each base and saves them to a dictionary
 def seqCounter(file):
+    import collections
     seq_list = fileReader(file)
-    seq_map = {"A": 0, "T": 0, "G": 0, "C": 0}
+    seq_map = collections.Counter()
     for i in range(len(seq_list)):
         for j in seq_list[i]:
-            if j.upper() == "A":
-                seq_map['A'] = seq_map['A'] + 1
-            elif j.upper() == "T":
-                seq_map['T'] = seq_map['T'] + 1
-            elif j.upper() == "C":
-                seq_map['C'] = seq_map['C'] + 1
-            elif j.upper() == "G":
-                seq_map['G'] = seq_map['G'] + 1
+            seq_map[j.upper()] += 1
+    print("Finished counting nucleotides at: {0}".format(datetime.datetime.now()))
     return (seq_map)
 
 # calculates and prints GC, AT percentage
@@ -45,8 +42,7 @@ def main():
 
 
 if __name__ == "__main__":
-    import datetime
 
     start = datetime.datetime.now()
     main()
-    print("It took: {0}".format((datetime.datetime.now()) - start))
+    print("Process finished in: {0}".format((datetime.datetime.now()) - start))
