@@ -1,5 +1,4 @@
-
-
+# reads in a fasta file and skips header lines
 def fileReader(file_Path):
     filePath = file_Path
     file = open(filePath, 'r')
@@ -9,12 +8,13 @@ def fileReader(file_Path):
             pass
         else:
             seq_list.append(line)
-
     file.close()
-    return(seq_list)
+    return (seq_list)
+
+# Counts the number of each base and saves them to a dictionary
 def seqCounter(file):
     seq_list = fileReader(file)
-    seq_map = {"A":0,"T":0,"G":0,"C":0}
+    seq_map = {"A": 0, "T": 0, "G": 0, "C": 0}
     for i in range(len(seq_list)):
         for j in seq_list[i]:
             if j.upper() == "A":
@@ -25,10 +25,9 @@ def seqCounter(file):
                 seq_map['C'] = seq_map['C'] + 1
             elif j.upper() == "G":
                 seq_map['G'] = seq_map['G'] + 1
+    return (seq_map)
 
-
-
-    return(seq_map)
+# calculates and prints GC, AT percentage
 def getStats(seq_map):
     total = seq_map['A'] + seq_map['T'] + seq_map['G'] + seq_map['C']
     AT_percent = ((seq_map['A'] + seq_map['T']) / total) * 100
@@ -43,8 +42,11 @@ def getStats(seq_map):
 
 def main():
     getStats(seqCounter("/Users/Jeremy/Documents/MSU/VanBuren_Lab/Grass_Drought/Eragrostis_tef/Tef_V3_5-8-18.fasta"))
+
+
 if __name__ == "__main__":
     import datetime
+
     start = datetime.datetime.now()
     main()
-    print("It took: {0}".format((datetime.datetime.now())-start))
+    print("It took: {0}".format((datetime.datetime.now()) - start))
