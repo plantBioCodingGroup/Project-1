@@ -1,3 +1,6 @@
+# By Scott
+# Goal: count base pairs and calculate percent GC for the below sequence
+
 library('seqinr')
 
 PhiX <- s2c("GAGTTTTATCGCTTCCATGACGCAGAAGTTAACACTTTCGGATATTTCTGATGAGTCGAAAAATTATCTT
