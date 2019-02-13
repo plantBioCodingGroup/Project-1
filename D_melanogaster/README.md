@@ -1,7 +1,7 @@
-#Exercises with the Drosophila melanogaster Chromosome 4
+# Exercises with the Drosophila melanogaster Chromosome 4
 02-13-19:
 
-##Translate cds file to a pep file
+## Translate cds file to a pep file
 A cds file contains the nucleotide sequence that is translated to amino acids
 - In this directory, you should find the cds file for Chromosome 4
 
