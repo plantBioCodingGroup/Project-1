@@ -26,7 +26,7 @@ def seqCounter(file):
 
 # calculates and prints GC, AT percentage
 def getStats(seq_map):
-    total = seq_map['A'] + seq_map['T'] + seq_map['G'] + seq_map['C']
+    total = seq_map['A'] + seq_map['T'] + seq_map['G'] + seq_map['C'] + seq_map['S']
     AT_percent = ((seq_map['A'] + seq_map['T']) / total) * 100
     GC_percent = ((seq_map['G'] + seq_map['C'] +seq_map['S']) / total) * 100
     print("The number of A bases is: {0}".format(seq_map['A']))
