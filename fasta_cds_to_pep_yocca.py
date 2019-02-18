@@ -1,4 +1,4 @@
-#!/Users/alanyocca/anaconda3/bin/python
+#!/bin/python
 #Alan E. Yocca
 #02-17-19
 #fasta_cds_to_pep.py
