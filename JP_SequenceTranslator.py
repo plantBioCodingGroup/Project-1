@@ -5,16 +5,18 @@ import re
 import pandas as pd
 from itertools import groupby
 
+# function to convert DNA sequence to RNA sequence
 def makeRNA(seq):
     newSeq = re.sub("T","U",seq.upper())
     return newSeq
+# inverts a dictionary makes keys values and values keys
 def invertDict(dict):
     newdict = {}
     for k in dict:
         for codon in dict[k].split(","):
             newdict.setdefault(codon,k)
     return(newdict)
-
+# reads in a codon table and converts it to a dictionary
 def getCodonDict (codonTable,delim):
     codonTable = pd.read_csv(codonTable,delim)
     AAdict = {}
@@ -24,8 +26,14 @@ def getCodonDict (codonTable,delim):
     return codonDict
 
 
-
-def fastaReader(fasta,codonTable,delim):
+# Parses FASTA file using a generator expression
+# credit to https://www.biostars.org/p/710/
+def fastaReader(fasta):
+    """
+        Fasta iterator modified from Brent Pedersen
+        Correct Way To Parse A Fasta File In Python
+        given a fasta file. yield tuples of header, sequence
+    """
     with open(fasta,'r') as fastaFile:
         faiter = (x[1] for x in groupby(fastaFile, lambda line: line[0] == ">"))
         for header in faiter:
@@ -37,21 +45,21 @@ def fastaReader(fasta,codonTable,delim):
 
             yield (headerStr, seq)
 
+# loop through FASTA translate sequence and write to new file
 def fastaTranslator(fasta,codonTable,delim,output):
-    """
-     Fasta iterator modified from Brent Pedersen
-    Correct Way To Parse A Fasta File In Python
-    given a fasta file. yield tuples of header, sequence
-    """
-    fiter = fastaReader(fasta, codonTable, delim)
+
+    fiter = fastaReader(fasta)
     with open(output,'w') as outputFile:
+        #loop through fasta generator and get header and sequence
         for faSeq in fiter:
             headerStr, seq = faSeq
             seq = makeRNA(seq)
+        #Test if length of sequence is a multiple of 3 otherwise raise an error and exit.
             if len(seq) % 3 != 0:
                 print("Error: length of CDS sequence is not a multiple of 3.")
                 exit()
             AAseq = ""
+        # loop through sequence and translate
             for i in range(0, len(seq), 3):
                 codon = seq[i:i + 3]
                 AA = getCodonDict(codonTable, delim)[codon]
@@ -84,24 +92,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-    #if len(seq) % 3 != 0:
-     #   print("Error: length of CDS sequence is not a multiple of 3.")
-      #  exit()
-#    for i in range(0, len(seq), 3):
-#        codon = seq[i:i + 3]
-#       AA = getCodonDict(codonTable, delim)[codon]
-#       AAseq = AAseq + AA
-#print(AAseq)
-
-#AAseq = str()
- #       for line in fastaFile:
-  #          if line.startswith(">"):
-   #             seq = ""
-    #            seqID = line.split()
-     #           print(seqID[0])
-      #      else:
-       #         while not line.startswith(">"):
-        #           line = line.strip("\n")
-         #           seq = seq+makeRNA(line)
-#
- #       yield seq
