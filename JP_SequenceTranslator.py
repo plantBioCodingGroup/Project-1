@@ -38,6 +38,11 @@ def fastaReader(fasta,codonTable,delim):
             yield (headerStr, seq)
 
 def fastaTranslator(fasta,codonTable,delim,output):
+    """
+     Fasta iterator modified from Brent Pedersen
+    Correct Way To Parse A Fasta File In Python
+    given a fasta file. yield tuples of header, sequence
+    """
     fiter = fastaReader(fasta, codonTable, delim)
     with open(output,'w') as outputFile:
         for faSeq in fiter:
