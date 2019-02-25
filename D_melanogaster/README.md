@@ -18,13 +18,14 @@ Therefore, it already has introns and UTRs removed
 - Drosophila_melanogaster.BDGP6.95.chromosome.4.gff3
 
 
-
 Info on GFF file:
 - https://useast.ensembl.org/info/website/upload/gff.html
-- In the programming language of your choice:
-  - Read in GFF file
-  - Specify genomic range on the cmd line:
-    - eg. `$ my_program.py --chromosome 4 --start 1 --stop 1000`
-  - Report all genes in the specified range
+
+
+In the programming language of your choice:
+- Read in GFF file
+- Specify genomic range on the cmd line:
+  - eg. `$ my_program.py --chromosome 4 --start 1 --stop 1000`
+- Report all genes in the specified range
 
 
