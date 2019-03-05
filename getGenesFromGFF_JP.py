@@ -41,6 +41,6 @@ def main():
     delim = args.delim
     interval = args.interval
     print(interval.split(","))
-    print(gffParser(gff,delim))
+    #print(gffParser(gff,delim))
 if __name__ == "__main__":
     main()
