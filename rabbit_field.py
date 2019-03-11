@@ -34,7 +34,7 @@ variables to specify on command line:
 #print(args.accumulate(args.integers))
 
 
-#figure that shit out later
+#figure that out later
 
 class Animal:	
 	def __init__(self,species,width,length):
